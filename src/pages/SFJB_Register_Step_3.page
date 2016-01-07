@@ -1,0 +1,21 @@
+<apex:page controller="SFJB_RegisterController" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.vendor_css, 'bootstrap/css/bootstrap.min.css')}"/>
+    <body>
+        <div class="container">
+            <div class="container-form">
+                <apex:form >
+                    Congratulations! Your user has been created.
+                    <br/>
+                    Username: {!SiteUser.Username__c}
+                    <br/>
+                    Click <apex:commandLink value="here" action="{!SaveAndNextStep3}"/> to login to your account.
+                </apex:form>
+            </div>
+        </div>
+    </body>
+    <style type="text/css">
+        body{margin: 0px;text-align:center;}
+        .container{width:50%;margin-top:5%;display:inline-block;text-align:right;}
+        .container-form{width:100%;display:inline-block;text-align:left;}
+    </style>
+</apex:page>

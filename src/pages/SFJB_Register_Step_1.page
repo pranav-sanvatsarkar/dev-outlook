@@ -1,0 +1,35 @@
+<apex:page controller="SFJB_RegisterController" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.vendor_css, 'bootstrap/css/bootstrap.min.css')}"/>
+    <body>
+        <div class="container">
+            <div class="container-form">
+                <apex:form >
+                    <apex:pageMessages />
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <apex:inputText label="firstName" styleClass="form-control" value="{!SiteUser.First_Name__c}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <apex:inputText label="lastName" styleClass="form-control" value="{!SiteUser.Last_Name__c}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <apex:inputText label="email" styleClass="form-control" value="{!SiteUser.Email__c}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <apex:inputText label="contact" styleClass="form-control" value="{!SiteUser.Contact_Number__c}"/>
+                    </div>
+                    <apex:commandButton styleClass="btn btn-danger" value="Cancel" action="{!PreviousStep1}"/>
+                    <apex:commandButton styleClass="btn btn-success" value="Save & Next" action="{!SaveAndNextStep1}" style="margin-left: 1%;"/>
+                </apex:form>
+            </div>
+        </div>
+    </body>
+    <style type="text/css">
+        body{margin: 0px;text-align:center;}
+        .container{width:50%;margin-top:5%;display:inline-block;text-align:right;}
+        .container-form{width:100%;display:inline-block;text-align:left;}
+    </style>
+</apex:page>

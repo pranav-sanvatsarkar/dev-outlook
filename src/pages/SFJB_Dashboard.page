@@ -1,0 +1,11 @@
+<apex:page controller="SFJB_DashboardController" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.vendor_css, 'bootstrap/css/bootstrap.min.css')}"/>
+    <body>
+        <div class="container">
+            <apex:outputPanel rendered="{!IF(RecordId != '', true, false)}" styleClass="container-form">
+                asdasd - {!RecordId}
+                Welcome to the portal!
+            </apex:outputPanel>
+        </div>
+    </body>
+</apex:page>

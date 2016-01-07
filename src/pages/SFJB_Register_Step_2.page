@@ -1,0 +1,27 @@
+<apex:page controller="SFJB_RegisterController" standardStylesheets="false" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.vendor_css, 'bootstrap/css/bootstrap.min.css')}"/>
+    <body>
+        <div class="container">
+            <div class="container-form">
+                <apex:form >
+                    <apex:pageMessages />
+                    <div class="form-group">
+                        <label>Username</label>
+                        <apex:inputText label="username" styleClass="form-control" value="{!SiteUser.Username__c}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <apex:inputSecret label="password" styleClass="form-control" value="{!SiteUser.Password__c}"/>
+                    </div>
+                    <apex:commandButton styleClass="btn btn-danger" value="Previous" action="{!PreviousStep2}"/>
+                    <apex:commandButton styleClass="btn btn-success" value="Save & Next" action="{!SaveAndNextStep2}" style="margin-left: 1%;"/>
+                </apex:form>
+            </div>
+        </div>
+    </body>
+    <style type="text/css">
+        body{margin: 0px;text-align:center;}
+        .container{width:50%;margin-top:5%;display:inline-block;text-align:right;}
+        .container-form{width:100%;display:inline-block;text-align:left;}
+    </style>
+</apex:page>
