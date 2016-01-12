@@ -1,11 +1,27 @@
-<apex:page controller="SFJB_DashboardController" standardStylesheets="false" showHeader="false">
+<apex:page controller="SFJB_DashboardController" standardStylesheets="false" showHeader="false" action="{!GetLoggedInUser}">
     <apex:stylesheet value="{!URLFOR($Resource.vendor_css, 'bootstrap/css/bootstrap.min.css')}"/>
     <body>
-        <div class="container">
-            <apex:outputPanel rendered="{!IF(RecordId != '', true, false)}" styleClass="container-form">
-                asdasd - {!RecordId}
-                Welcome to the portal!
-            </apex:outputPanel>
-        </div>
+        <apex:form >
+            <nav class="navbar navbar-inverse">
+                <div>
+                    <h5 style="margin-left: 1%">{!SiteUser.First_Name__c} {!SiteUser.Last_Name__c}</h5>
+                </div>
+                <apex:commandlink value="Logout" action="{!Logout}" style="text-decoration: none; color: white; position: absolute; right: 1%; top: 25%;"/>
+            </nav>
+            <div class="container">
+                <apex:outputPanel rendered="{!IF(RecordId != '', true, false)}" styleClass="container-form">
+					<c:SFJB_TableWithPaginationAction fieldMappings="{!lstFieldMappings}" records="{!LstContacts}"></c:SFJB_TableWithPaginationAction>
+                </apex:outputPanel>
+            </div>
+        </apex:form>
+        <nav class="navbar navbar-inverse" style="position: fixed; bottom: 0px; right: 0px; left: 0px; text-align: center">
+            <div >
+                <h5>Developed by - Pranav Sanvatsarkar</h5>
+            </div>
+        </nav>
     </body>
+    <style type="text/css">
+        .navbar-inverse { background-color: #286090; border-color: #204d74; border-radius: 0px; text-align: left;}
+        h5{color: white; margin-top: 1%;}
+    </style>
 </apex:page>

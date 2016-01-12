@@ -4,24 +4,15 @@ public class SFJB_RegisterController {
         SiteUser = new Site_User__c();
     }
     public PageReference SaveAndNextStep1(){
-        try{
-            SiteUser.Name = SiteUser.First_Name__c + ' ' + SiteUser.Last_Name__c;
-            SiteUser.Username__c = SiteUser.Email__c;
-            if( SiteUser.Id == null)
-            	insert SiteUser;
-            else
-                update SiteUser;
-            return Page.SFJB_Register_Step_2;
-        }
-        catch(Exception ex){
-            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.ERROR, ex.getMessage() );
-            ApexPages.addMessage(errMsg);
-        }
-        return null;
+        if( SiteUser.RecordTypeId == null )
+        	SiteUser.RecordTypeId = Schema.SObjectType.Site_User__c.getRecordTypeInfosByName().get('Candidate').getRecordTypeId();
+        SiteUser.Name = SiteUser.First_Name__c + ' ' + SiteUser.Last_Name__c;
+        SiteUser.Username__c = SiteUser.Email__c;
+        return Page.SFJB_Register_Step_2;
     }
     public PageReference SaveAndNextStep2(){
         try{
-            update SiteUser;
+            insert SiteUser;
             return Page.SFJB_Register_Step_3;
         }
         catch(Exception ex){
